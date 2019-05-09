@@ -1,3 +1,4 @@
+from random import randint
 import random
 import math
 import string
@@ -24,6 +25,14 @@ def randomString(stringLength):
     letters = string.ascii_lowercase
     return ''.join(random.choice(letters) for i in range(stringLength))
 
+def vowel_count_test(string):
+    count=0
+    for z in string:
+        if z in ['a','e','i','o','u']:
+            count=count+1
+    return count
+def sort_by_vowel_count(words):
+    return words.sort(key=vowel_count_test,reverse=True)
 
 #Retrieving student number
 StudentNr = input("0. The student number is: ")
@@ -67,3 +76,13 @@ print("**********************************")
 for i in range(r):
     print(i," - ",arrayWords[i])
 print("**********************************")
+
+print ("")
+print ("5. Sorted List:")
+print ("***************") 
+
+#sorted(arrayWords, key=lambda word: sum(ch in 'aeiou' for ch in word),  reverse=False)
+arrayWords.sort(key = vowel_count_test, reverse = True)
+for i in range(0, r):
+    print (i, " - ", arrayWords[i], "(Vowels:", vowel_count_test(arrayWords[i]),")")
+print ("***************")
